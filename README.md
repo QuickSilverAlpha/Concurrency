@@ -46,7 +46,7 @@ In your writeup, estimate the time overhead that your new implementation uses (i
 Include: working code for parallel_mutex.c; In PDF: short answer for analysis of prior code’s unintended behaviors, a graph of prior running time vs. updated running time, an estimate of the timing overhead, and an explanation of how you came up with that estimate
 
 
-**Part 3 - Spinlock (30 Points)	**
+**Part 3 - Spinlock (30 Points)**
 
 If you were to replace all mutexes with spinlocks, what do you think will happen to the running time?  Write a short answer describing what you expect to happen, and why the differences in mutex vs. spinlock implementations lead you to that conclusion (it’s okay if your intuition turns out to be wrong, but start with this answer first).
 Now, copy your parallel_mutex.c code to parallel_spin.c; we’re going to test your hypothesis by replacing all mutexes with spinlocks (things like pthread_mutex_t become pthread_spinlock_t, and pthread_mutex_lock becomes pthread_spin_lock).
@@ -55,7 +55,7 @@ Lastly, estimate the time overhead that your spinlock implementation uses and ex
 Include: working code for parallel_spin.c; In PDF: short answer for what you expect to happen when replacing mutex(es) with spinlock(s), explanation for why you have that hypothesis (based on the differences in how a mutex operates vs. a spinlock), a graph of prior running time vs. mutex running time vs. spinlock running time, an estimate of the timing overhead of spinlocks, and an explanation of how you came up with that estimate
 
 
-**Part 4 - Mutex, Retrieve Parallelization (20 Points)	**
+**Part 4 - Mutex, Retrieve Parallelization (20 Points)**
 
 Let’s revisit your mutex-based code.  When we retrieve an item from the hash table, do we need a lock?  Write a short answer and explain why or why not.
 Copy your parallel_mutex.c code to parallel_mutex_opt.c.  In this new program, update your code so that multiple retrieve operations can run in parallel.
