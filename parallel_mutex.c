@@ -10,6 +10,17 @@
 int num_threads = 1;      // Number of threads (configurable)
 int keys[NUM_KEYS];
 
+//Create mutex here 
+//Initialize with default attributes
+
+pthread_mutex_t   mut;
+/*
+pthread_mutexattr_t   mut_att;
+
+pthread_mutexattr_init(&mut_att);
+pthread_mutex_init(&mut, &mut_att);
+*/
+
 typedef struct _bucket_entry {
   int key;
   int val;
@@ -31,6 +42,9 @@ double now() {
 
 // Inserts a key-value pair into the table
 void insert(int key, int val) {
+  //Lock before inserting to prevent key loss
+  pthread_mutex_lock(&mut);
+
   int i = key % NUM_BUCKETS;
   bucket_entry *e = (bucket_entry *) malloc(sizeof(bucket_entry));
   if (!e) panic("No memory to allocate bucket!");
@@ -38,15 +52,26 @@ void insert(int key, int val) {
   e->key = key;
   e->val = val;
   table[i] = e;
+  //Release lock once completed
+  pthread_mutex_unlock(&mut);
 }
 
 // Retrieves an entry from the hash table by key
 // Returns NULL if the key isn't found in the table
 bucket_entry * retrieve(int key) {
+  //Lock before retrieval to prevent key loss
+  pthread_mutex_lock(&mut);
+
   bucket_entry *b;
   for (b = table[key % NUM_BUCKETS]; b != NULL; b = b->next) {
-    if (b->key == key) return b;
+    if (b->key == key) { 
+      //Release lock once key is found and return the retrieved bucket entry
+      pthread_mutex_unlock(&mut); 
+      return b;
+    }
   }
+  //Release lock once completed
+  pthread_mutex_unlock(&mut);
   return NULL;
 }
 
@@ -80,6 +105,11 @@ int main(int argc, char **argv) {
   long i;
   pthread_t *threads;
   double start, end;
+
+  if (pthread_mutex_init(&mut, NULL) != 0) {
+    printf("\n Mutex init has failed\n");
+    return 1;
+  }
 
   if (argc != 2) {
     panic("usage: ./parallel_hashtable <num_threads>");
