@@ -11,9 +11,9 @@ int num_threads = 1;      // Number of threads (configurable)
 int keys[NUM_KEYS];
 
 //Create mutex here 
-//Initialize with default attributes
+//Initialize with default attributes 
 
-pthread_mutex_t   mut;
+pthread_mutex_t mut;
 /*
 pthread_mutexattr_t   mut_att;
 

@@ -1704,3 +1704,168 @@ parallel_mutex 55 running  =====================
 [thread 49] 0 keys lost!
 [main] Retrieved 100000/100000 keys in 12.442163 seconds
 parallel_mutex 56 running  =====================
+parallel_mutex 1 running  =====================
+[main] Inserted 100000 keys in 0.007212 seconds
+[thread 0] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 7.369079 seconds
+parallel_mutex 2 running  =====================
+[main] Inserted 100000 keys in 0.022120 seconds
+[thread 0] 0 keys lost!
+[thread 1] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 8.765705 seconds
+parallel_mutex 3 running  =====================
+[main] Inserted 100000 keys in 0.015502 seconds
+[thread 2] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 1] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 8.896276 seconds
+parallel_mutex 4 running  =====================
+[main] Inserted 100000 keys in 0.027029 seconds
+[thread 2] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 1] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 10.612674 seconds
+parallel_mutex 5 running  =====================
+[main] Inserted 100000 keys in 0.028454 seconds
+[thread 1] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 4] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 10.790221 seconds
+parallel_mutex 6 running  =====================
+[main] Inserted 100000 keys in 0.035185 seconds
+[thread 3] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 4] 0 keys lost!
+[thread 5] 0 keys lost!
+[thread 2] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 10.091147 seconds
+parallel_mutex 7 running  =====================
+[main] Inserted 100000 keys in 0.037165 seconds
+[thread 3] 0 keys lost!
+[thread 4] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 6] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 5] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 10.359624 seconds
+parallel_mutex 8 running  =====================
+[main] Inserted 100000 keys in 0.040755 seconds
+[thread 4] 0 keys lost!
+[thread 7] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 6] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 5] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 2] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 10.666179 seconds
+parallel_mutex 9 running  =====================
+[main] Inserted 100000 keys in 0.042008 seconds
+[thread 6] 0 keys lost!
+[thread 8] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 5] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 4] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 7] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 11.223430 seconds
+parallel_mutex 10 running  =====================
+[main] Inserted 100000 keys in 0.045738 seconds
+[thread 4] 0 keys lost!
+[thread 6] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 9] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 5] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 8] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 7] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 10.971927 seconds
+parallel_mutex 11 running  =====================
+[main] Inserted 100000 keys in 0.040412 seconds
+[thread 4] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 9] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 6] 0 keys lost!
+[thread 8] 0 keys lost!
+[thread 7] 0 keys lost!
+[thread 10] 0 keys lost!
+[thread 5] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 0] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 10.838498 seconds
+parallel_mutex 12 running  =====================
+[main] Inserted 100000 keys in 0.041889 seconds
+[thread 3] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 10] 0 keys lost!
+[thread 7] 0 keys lost!
+[thread 4] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 5] 0 keys lost!
+[thread 9] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 6] 0 keys lost!
+[thread 8] 0 keys lost!
+[thread 11] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 12.007860 seconds
+parallel_mutex 13 running  =====================
+[main] Inserted 100000 keys in 0.038216 seconds
+[thread 4] 0 keys lost!
+[thread 10] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 12] 0 keys lost!
+[thread 6] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 7] 0 keys lost!
+[thread 9] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 11] 0 keys lost!
+[thread 8] 0 keys lost!
+[thread 5] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 12.041068 seconds
+parallel_mutex 14 running  =====================
+[main] Inserted 100000 keys in 0.040061 seconds
+[thread 7] 0 keys lost!
+[thread 4] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 0] 0 keys lost!
+[thread 8] 0 keys lost!
+[thread 9] 0 keys lost!
+[thread 10] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 5] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 11] 0 keys lost!
+[thread 12] 0 keys lost!
+[thread 6] 0 keys lost!
+[thread 13] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 12.595062 seconds
+parallel_mutex 15 running  =====================
+[main] Inserted 100000 keys in 0.044463 seconds
+[thread 0] 0 keys lost!
+[thread 11] 0 keys lost!
+[thread 13] 0 keys lost!
+[thread 2] 0 keys lost!
+[thread 6] 0 keys lost!
+[thread 14] 0 keys lost!
+[thread 10] 0 keys lost!
+[thread 1] 0 keys lost!
+[thread 3] 0 keys lost!
+[thread 7] 0 keys lost!
+[thread 5] 0 keys lost!
+[thread 4] 0 keys lost!
+[thread 9] 0 keys lost!
+[thread 12] 0 keys lost!
+[thread 8] 0 keys lost!
+[main] Retrieved 100000/100000 keys in 11.942286 seconds
