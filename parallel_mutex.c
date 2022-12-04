@@ -106,16 +106,16 @@ int main(int argc, char **argv) {
   pthread_t *threads;
   double start, end;
 
-  if (pthread_mutex_init(&mut, NULL) != 0) {
-    printf("\n Mutex init has failed\n");
-    return 1;
-  }
-
   if (argc != 2) {
     panic("usage: ./parallel_hashtable <num_threads>");
   }
   if ((num_threads = atoi(argv[1])) <= 0) {
     panic("must enter a valid number of threads to run");
+  }
+
+  if (pthread_mutex_init(&mut, NULL) != 0) {
+    printf("\n Mutex init has failed\n");
+    return 1;
   }
 
   srandom(time(NULL));
