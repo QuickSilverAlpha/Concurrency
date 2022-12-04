@@ -10,16 +10,8 @@
 int num_threads = 1;      // Number of threads (configurable)
 int keys[NUM_KEYS];
 
-//Create mutex here 
-//Initialize with default attributes 
 
 pthread_mutex_t mut;
-/*
-pthread_mutexattr_t   mut_att;
-
-pthread_mutexattr_init(&mut_att);
-pthread_mutex_init(&mut, &mut_att);
-*/
 
 typedef struct _bucket_entry {
   int key;
@@ -42,9 +34,6 @@ double now() {
 
 // Inserts a key-value pair into the table
 void insert(int key, int val) {
-  //Lock before inserting to prevent key loss
-  pthread_mutex_lock(&mut);
-
   int i = key % NUM_BUCKETS;
   bucket_entry *e = (bucket_entry *) malloc(sizeof(bucket_entry));
   if (!e) panic("No memory to allocate bucket!");
@@ -52,13 +41,19 @@ void insert(int key, int val) {
   e->key = key;
   e->val = val;
   table[i] = e;
-  //Release lock once completed
-  pthread_mutex_unlock(&mut);
 }
 
 // Retrieves an entry from the hash table by key
 // Returns NULL if the key isn't found in the table
 bucket_entry * retrieve(int key) {
+  bucket_entry *b;
+  for (b = table[key % NUM_BUCKETS]; b != NULL; b = b->next) {
+    if (b->key == key) return b;
+  }
+  return NULL;
+}
+
+bucket_entry * retrieve_lock(int key) {
   //Lock before retrieval to prevent key loss
   pthread_mutex_lock(&mut);
 
@@ -95,6 +90,19 @@ void * get_phase(void *arg) {
 
   for (key = tid ; key < NUM_KEYS; key += num_threads) {
     if (retrieve(keys[key]) == NULL) lost++;
+  }
+  printf("[thread %ld] %ld keys lost!\n", tid, lost);
+
+  pthread_exit((void *)lost);
+}
+
+void * get_phase_lock(void *arg) {
+  long tid = (long) arg;
+  int key = 0;
+  long lost = 0;
+
+  for (key = tid ; key < NUM_KEYS; key += num_threads) {
+    if (retrieve_lock(keys[key]) == NULL) lost++;
   }
   printf("[thread %ld] %ld keys lost!\n", tid, lost);
 
@@ -160,6 +168,25 @@ int main(int argc, char **argv) {
   end = now();
 
   printf("[main] Retrieved %ld/%d keys in %f seconds\n", NUM_KEYS - total_lost, NUM_KEYS, end - start);
+
+  // Reset the thread array
+  memset(threads, 0, sizeof(pthread_t)*num_threads);
+
+  // Retrieve keys in parallel
+  start = now();
+  for (i = 0; i < num_threads; i++) {
+    pthread_create(&threads[i], NULL, get_phase_lock, (void *)i);
+  }
+
+  // Collect count of lost keys
+  long total_lost_lock = 0;
+  long *lost_keys_lock = (long *) malloc(sizeof(long) * num_threads);
+  for (i = 0; i < num_threads; i++) {
+    pthread_join(threads[i], (void **)&lost_keys_lock[i]);
+    total_lost_lock += lost_keys_lock[i];
+  }
+  end = now();
+  printf("[main] Retrieved %ld/%d keys in %f seconds\n", NUM_KEYS - total_lost_lock, NUM_KEYS, end - start);
 
   return 0;
 }
